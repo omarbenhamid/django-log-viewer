@@ -1,0 +1,29 @@
+{% extends "admin/base_site.html" %}
+{% load admin_static %}{% load suit_tags %}{% load i18n %}
+
+{% block content-center %}
+    <div id="suit-center" class="suit-column">
+        <ul>
+            {% for line in logs %}
+                <li>{{ line }}</li>
+            {% endfor %}
+        </ul>
+        {% if not last %}
+            <a href="{% url 'log-viewer:logfile-view' current_file next_page %}"> More </a>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block content-left %}
+    <div id="suit-left" class="suit-column">
+        <div class="left-nav" id="left-nav">
+            <ul>
+                {% for files in log_files %}
+                    {% for file_name, file_url  in files.items %}
+                        <li><a href="{% url 'log-viewer:logfile-view' file_name 1 %}">{{ file_name }}</a></li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock%}
