@@ -11,15 +11,16 @@ Quick start
 
     INSTALLED_APPS = [
         ...
-        'django-log-viewer',
+        'log_viewer',
     ]
 
 2. Include the log-viewer URLconf in your project urls.py like this::
 
-    url(r'^log_viewer/', include('log-viewer.urls')),
+    url(r'^admin/log_viewer/', include('log_viewer.urls')),
 
 3. In your settings file create the following value::
 
-    LOG_VIEWER_FILES = ['path/to/logfile1', 'path/to/logfile2', ...]
+    LOGS_DIR = os.path.join(BASE_DIR, '../logs')
+    LOG_VIEWER_FILES = ['logfile1', 'logfile2', ...]
 
 4. Start the development server and visit http://127.0.0.1:8000/admin/log_viewer/
