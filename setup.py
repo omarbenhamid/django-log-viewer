@@ -11,7 +11,7 @@ setup(
     name='django-log-viewer',
     version='0.1',
     author="InkaLabs",
-    packages=find_packages(),
+    packages='log-viewer',
     include_package_data=True,
     license='BSD License',  # example license
     description='A simple Django app to read log files in the admin.',
