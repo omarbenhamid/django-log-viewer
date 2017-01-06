@@ -1,6 +1,7 @@
 {% extends "admin/base_site.html" %}
 {% load admin_static %}{% load i18n %}
 
+{% block extrastyle %}
 <style>
 .left{
   background-color:red;
@@ -17,7 +18,7 @@
   width:70%;
 }
 </style>
-
+{% endblock %}
 
 {% block branding %}
 <h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>
