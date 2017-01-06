@@ -40,7 +40,8 @@ class LogViewerView(TemplateView):
             tmp_names = filter(lambda x: x.find('~') == -1, files)
             if not root.split('/')[-1] == 'user':
                 tmp_names = filter(
-                    lambda x: x in settings.LOG_VIEWER_FILES)
+                    lambda x: x in settings.LOG_VIEWER_FILES,
+                    tmp_names)
             file_names += tmp_names
             file_urls += map(lambda x: '%s/%s' % (root, x), tmp_names)
             if file_name and file_name in files:
