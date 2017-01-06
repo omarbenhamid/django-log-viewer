@@ -1,7 +1,7 @@
-{% extends "admin/base.html" %}
+{% extends "admin/base_site.html" %}
 {% load admin_static %}{% load i18n %}
 
-{% block content-center %}
+{% block content %}
     <div id="suit-center" class="suit-column">
         <ul>
             {% for line in logs %}
@@ -12,9 +12,7 @@
             <a href="{% url 'log-viewer:logfile-view' current_file next_page %}"> More </a>
         {% endif %}
     </div>
-{% endblock %}
 
-{% block content-left %}
     <div id="suit-left" class="suit-column">
         <div class="left-nav" id="left-nav">
             <ul>
