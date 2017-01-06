@@ -3,32 +3,50 @@
 
 {% block extrastyle %}
 <style>
-.left{
-  background-color:red;
-  height: 100%;
-  display: block;
-  float: left;
-  width:30%;
-}
-.right{
-  background-color:blue;
-  height: 100%;
-  display: block;
-  float: right;
-  width:70%;
-}
-#container{
-  height: 100%;
-}
-#content{
-  height: 100%;
-}
-html{
-  height: 100%;
-}
-body{
-  height: 100%;
-}
+  /* Styles go here */
+
+  .left{
+    height: 100%;
+    display: block;
+    float: left;
+    width:30%;
+  }
+  .right{
+    height: 100%;
+    display: block;
+    float: right;
+    width:70%;
+
+  }
+  #container{
+    height: 100%;
+  }
+  #content{
+    height: 100%;
+  }
+  html{
+    height: 100%;
+  }
+  body{
+    height: 100%;
+  }
+  li{
+    display:block;
+    margin: 20px 20px 20px 20px;
+
+  }
+  .left li{
+    background-color: silver;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    margin: 20px 20px 20px 20px;
+    padding:15px 15px 15px 15px;
+    text-align:center;
+  }
+
+  .left li:hover{
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);
+  }
 </style>
 {% endblock %}
 
