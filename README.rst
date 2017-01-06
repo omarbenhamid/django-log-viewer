@@ -16,7 +16,7 @@ Quick start
 
 2. Include the log-viewer URLconf in your project urls.py like this::
 
-    url(r'^admin/log_viewer/', include('log_viewer.urls')),
+    url(r'^admin/log_viewer/', include('log_viewer.urls', namespace="log-viewer")),
 
 3. In your settings file create the following value::
 

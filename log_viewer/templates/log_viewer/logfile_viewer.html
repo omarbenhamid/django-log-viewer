@@ -70,7 +70,7 @@
         <ul>
             {% for files in log_files %}
                 {% for file_name, file_url  in files.items %}
-                    <li><a href="{% url 'log-viewer:logfile-view' file_name 1 %}">{{ file_name }}</a></li>
+                    <a href="{% url 'log-viewer:logfile-view' file_name 1 %}"><li>{{ file_name }}</li></a>
                 {% endfor %}
             {% endfor %}
         </ul>
