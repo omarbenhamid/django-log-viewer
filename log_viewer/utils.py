@@ -11,7 +11,7 @@ def readlines_reverse(qfile, exclude=''):
     while position >= 0:
         qfile.seek(position)
         next_char = qfile.read(1)
-        if next_char == "\n" and len(line) and line[-1] == '[':
+        if next_char == "\n" and line and line[-1] == '[':
             if exclude in line[::-1]:
                 line = ''
             else:
