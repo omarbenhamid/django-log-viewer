@@ -27,5 +27,6 @@ Quick start
 
     LOGS_DIR = os.path.join(BASE_DIR, '../logs')
     LOG_VIEWER_FILES = ['logfile1', 'logfile2', ...]
+    LOG_ITEMS_PER_PAGE = 50
 
 5. Start the development server and visit http://127.0.0.1:8000/admin/log_viewer/

@@ -32,7 +32,7 @@ class LogViewerView(TemplateView):
         file_urls = []
         file_names = []
         page = int(page)
-        lines_per_page = 50
+        lines_per_page = getattr(settings, 'LOG_ITEMS_PER_PAGE', 50)
         current_file = file_name
         context['log_files'] = []
         context['next_page'] = page + 1

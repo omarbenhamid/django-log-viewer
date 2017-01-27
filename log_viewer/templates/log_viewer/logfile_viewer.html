@@ -58,7 +58,9 @@
     <div class="right">
         <ul>
             {% for line in logs %}
-                <li>{{ line }}</li>
+                <li>
+                    <pre>{{ line }}</pre>
+                </li>
             {% endfor %}
         </ul>
         {% if not last %}
