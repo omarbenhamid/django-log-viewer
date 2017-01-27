@@ -8,7 +8,7 @@ Quick start
 -----------
 1. Include the log-viewer URLconf in your project urls.py like this::
 
-    pip install -e git+git@bitbucket.org:inkalabsinc/django-log-viewer.git#egg=django-log-viewer
+    pip install -e git+git@bitbucket.org:inkalabsinc/django-log-viewer.git@v0.0.2#egg=django_log_viewer002
 
 
 
