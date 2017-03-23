@@ -29,4 +29,10 @@ Quick start
     LOG_VIEWER_FILES = ['logfile1', 'logfile2', ...]
     LOG_ITEMS_PER_PAGE = 50
 
+    Optionally you can set the next variables in order to customize the admin:
+
+    LOG_VIEWER_FILE_LIST_STYLES = <path to style file>
+    LOG_VIEWER_FILE_LIST_TITLE = "Custom title"
+    LOG_VIEWER_IS_DJANGO_JET = True|False
+
 5. Start the development server and visit http://127.0.0.1:8000/admin/log_viewer/

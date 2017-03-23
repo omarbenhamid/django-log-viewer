@@ -16,26 +16,11 @@
     display: block;
     float: right;
     width:70%;
-
-  }
-  #container{
-    height: 100%;
-  }
-  #content{
-    height: 100%;
-  }
-  html{
-    height: 100%;
-  }
-  body{
-    height: 100%;
-  }
-  li{
-    display:block;
-    margin: 20px 20px 20px 20px;
-
   }
   .left li{
+      display:block;
+    margin: 20px 20px 20px 20px;
+
     background-color: silver;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
@@ -48,10 +33,9 @@
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);
   }
 </style>
-{% endblock %}
-
-{% block branding %}
-<h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>
+    {% if custom_style_file %}
+        <link type="text/css" href="{{ custom_style_file }}" rel="stylesheet">
+    {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -69,6 +53,18 @@
     </div>
 
     <div class="left">
+        {% if custom_file_list_title %}
+            {% if is_django_jet %}
+                <div class="dashboard-item-header ui-sortable-handle">
+                    <span class="dashboard-item-header-drag icon-grid"></span>
+                    <span class="dashboard-item-header-title">
+                        {{ custom_file_list_title }}
+                    </span>
+                </div>
+            {% else %}
+                <b>{{ custom_file_list_title }}</b>
+            {% endif %}
+        {% endif %}
         <ul>
             {% for files in log_files %}
                 {% for file_name, file_url  in files.items %}

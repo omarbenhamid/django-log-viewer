@@ -34,6 +34,17 @@ class LogViewerView(TemplateView):
         page = int(page)
         lines_per_page = getattr(settings, 'LOG_ITEMS_PER_PAGE', 50)
         current_file = file_name
+
+        context['custom_file_list_title'] = getattr(
+            settings, 'LOG_VIEWER_FILE_LIST_TITLE', False
+        )
+        context['is_django_jet'] = getattr(
+            settings, 'LOG_VIEWER_IS_DJANGO_JET', False
+        )
+        context['custom_style_file'] = getattr(
+            settings, 'LOG_VIEWER_FILE_LIST_STYLES', False
+        )
+
         context['log_files'] = []
         context['next_page'] = page + 1
         for root, directory, files in os.walk(settings.LOGS_DIR):
