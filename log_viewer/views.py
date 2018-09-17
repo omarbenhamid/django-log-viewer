@@ -11,9 +11,11 @@ from .utils import readlines_reverse
 class LogViewerView(TemplateView):
     """
     LogViewerView class
+    #Todo: add more specific documentation
 
     :cvar template_name: Name of the HTML template used to render the log files
     """
+
     template_name = "log_viewer/logfile_viewer.html"
 
     @method_decorator(login_required)
@@ -27,7 +29,7 @@ class LogViewerView(TemplateView):
         :param file_name: log file name
         :param page: log viewer page
         """
-        print(11111111111111111111111111111111111)
+
         context = super(LogViewerView, self).get_context_data(**kwargs)
         file_urls = []
         file_names = []
@@ -65,13 +67,10 @@ class LogViewerView(TemplateView):
         if file_name:
             try:
                 with open(file_name) as file:
-                    print("----------------------------")
-                    print(file_name)
                     next_lines = list(
                         islice(readlines_reverse(file, exclude='Not Found'),
                                (page - 1) * lines_per_page,
                                page * lines_per_page))
-                    print(next_lines)
                     if len(next_lines) < lines_per_page:
                         context['last'] = True
                     else:
