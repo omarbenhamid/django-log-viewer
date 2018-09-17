@@ -16,7 +16,7 @@ class LogViewerView(TemplateView):
     :cvar template_name: Name of the HTML template used to render the log files
     """
 
-    template_name = "log_viewer/logfile_viewer.html"
+    template_name = "logfile_viewer.html"
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
