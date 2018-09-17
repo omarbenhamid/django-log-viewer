@@ -26,7 +26,7 @@ Quick start
 4. In your settings file create the following value::
 
     LOGS_DIR = os.path.join(BASE_DIR, '../logs')
-    LOG_VIEWER_FILES = ['logfile1', 'logfile2', ...]
+    LOG_VIEWER_FILES = ['logfile1.log', 'logfile2.log', ...]
     LOG_ITEMS_PER_PAGE = 50
 
     Optionally you can set the next variables in order to customize the admin:
