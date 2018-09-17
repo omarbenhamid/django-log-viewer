@@ -1,0 +1,76 @@
+{% extends "admin/base_site.html" %}
+{% load admin_static %}{% load i18n %}
+
+{% block extrastyle %}
+<style>
+  /* Styles go here */
+
+  .left{
+    height: 100%;
+    display: block;
+    float: left;
+    width:30%;
+  }
+  .right{
+    height: 100%;
+    display: block;
+    float: right;
+    width:70%;
+  }
+  .left li{
+      display:block;
+    margin: 20px 20px 20px 20px;
+
+    background-color: silver;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    margin: 20px 20px 20px 20px;
+    padding:15px 15px 15px 15px;
+    text-align:center;
+  }
+
+  .left li:hover{
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+</style>
+    {% if custom_style_file %}
+        <link type="text/css" href="{{ custom_style_file }}" rel="stylesheet">
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="right">
+        <ul>
+            {% for line in logs %}
+                <li>
+                    <pre>{{ line }}</pre>
+                </li>
+            {% endfor %}
+        </ul>
+        {% if not last %}
+            <a href="{% url 'log-viewer:logfile-view' current_file next_page %}"> More </a>
+        {% endif %}
+    </div>
+
+    <div class="left">
+        {% if custom_file_list_title %}
+            {% if is_django_jet %}
+                <div class="dashboard-item-header ui-sortable-handle">
+                    <span class="dashboard-item-header-drag icon-grid"></span>
+                    <span class="dashboard-item-header-title">
+                        {{ custom_file_list_title }}
+                    </span>
+                </div>
+            {% else %}
+                <b>{{ custom_file_list_title }}</b>
+            {% endif %}
+        {% endif %}
+        <ul>
+            {% for files in log_files %}
+                {% for file_name, file_url  in files.items %}
+                    <a href="{% url 'log-viewer:logfile-view' file_name 1 %}"><li>{{ file_name }}</li></a>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock%}
