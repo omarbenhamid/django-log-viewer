@@ -28,11 +28,19 @@ Quick start
     LOGS_DIR = os.path.join(BASE_DIR, '../logs')
     LOG_VIEWER_FILES = ['logfile1.log', 'logfile2.log', ...]
     LOG_ITEMS_PER_PAGE = 50
-
+    LOGGING = {
+        'formatters': {
+            'verbose': {
+                'format': '[{levelname}] {asctime} {module} {message}',
+                'style': '{',
+            },
+        },
+    }
     Optionally you can set the next variables in order to customize the admin:
 
     LOG_VIEWER_FILE_LIST_STYLES = <path to style file>
     LOG_VIEWER_FILE_LIST_TITLE = "Custom title"
     LOG_VIEWER_IS_DJANGO_JET = True|False
+
 
 5. Start the development server and visit http://127.0.0.1:8000/admin/log_viewer/
