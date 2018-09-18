@@ -79,6 +79,7 @@ class LogViewerView(TemplateView):
                     context['current_file'] = current_file
                     context['file'] = file
             except (IOError, ValueError):
+                print ("ERROR")
                 pass
         else:
             context['last'] = True

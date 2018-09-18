@@ -8,6 +8,7 @@ def readlines_reverse(qfile, exclude=''):
     qfile.seek(0, os.SEEK_END)
     position = qfile.tell()
     line = ''
+    print("readlinesreverse----")
     while position >= 0:
         qfile.seek(position)
         next_char = qfile.read(1)
