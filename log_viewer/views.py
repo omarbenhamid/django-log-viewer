@@ -47,13 +47,20 @@ class LogViewerView(TemplateView):
 
         context['log_files'] = []
         context['next_page'] = page + 1
-        for root, directory, files in os.walk(settings.LOGS_DIR):
+        for root, _, files in os.walk(settings.LOGS_DIR):
             tmp_names = list(filter(lambda x: x.find('~') == -1, files))
-            if not root.split('/')[-1] == 'user':
+            # if LOG_VIEWER_FILES is not set in settings
+            # then all the files with '.log' extension are listed
+            if hasattr(settings, 'LOG_VIEWER_FILES'):
                 tmp_names = list(
                     filter(
                         lambda x: x in settings.LOG_VIEWER_FILES,
                         tmp_names))
+            else:
+                tmp_names = [
+                    name for name in tmp_names if (
+                        name.split('.')[-1]) == 'log']
+
             file_names += tmp_names
             file_urls += list(map(lambda x: '%s/%s' % (root, x), tmp_names))
             if file_name and file_name in files:
