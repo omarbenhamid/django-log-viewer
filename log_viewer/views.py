@@ -38,9 +38,6 @@ class LogViewerView(TemplateView):
         page = int(page)
         lines_per_page = getattr(settings, 'LOG_ITEMS_PER_PAGE', 50)
         current_file = file_name
-
-        # print('file_name', file_name)
-
         context['custom_file_list_title'] = getattr(
             settings, 'LOG_VIEWER_FILE_LIST_TITLE', False
         )
