@@ -64,7 +64,7 @@
             {% endfor %}
         </ul>
         {% if not last %}
-            <a href="{% url 'log-viewer:logfile-view' current_file next_page %}"> More </a>
+            <a href="{% url 'log-viewer:logfile-view' request.resolver_match.kwargs.file_name next_page %}"> More </a>
         {% endif %}
     </div>
 </div>
