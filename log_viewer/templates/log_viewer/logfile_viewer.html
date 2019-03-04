@@ -4,33 +4,26 @@
 {% block extrastyle %}
 <style>
   /* Styles go here */
-
-  .left{
-    height: 100%;
-    display: block;
-    float: left;
-    width:30%;
-  }
-  .right{
-    height: 100%;
-    display: block;
-    float: right;
-    width:70%;
-  }
-  .left li{
-      display:block;
-    margin: 20px 20px 20px 20px;
-
+  .django__log__viewer .files a{
+    display: inline-block;
     background-color: silver;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-    margin: 20px 20px 20px 20px;
+    margin: 20px 20px 20px 0;
     padding:15px 15px 15px 15px;
     text-align:center;
   }
 
-  .left li:hover{
+  .django__log__viewer .files a:hover{
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  .django__log__viewer pre {
+    white-space: pre-wrap;
+    word-break: keep-all
+  }
+  .django__log__viewer .files a.selected {
+      background: #282d46;
+      color: white;
   }
 </style>
     {% if custom_style_file %}
@@ -39,19 +32,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="right">
-        <ul>
-            {% for line in logs %}
-                <li>
-                    <pre>{{ line }}</pre>
-                </li>
-            {% endfor %}
-        </ul>
-        {% if not last %}
-            <a href="{% url 'log-viewer:logfile-view' current_file next_page %}"> More </a>
-        {% endif %}
-    </div>
-
+<div class="django__log__viewer">
     <div class="left">
         {% if custom_file_list_title %}
             {% if is_django_jet %}
@@ -65,12 +46,26 @@
                 <b>{{ custom_file_list_title }}</b>
             {% endif %}
         {% endif %}
-        <ul>
+        <div class="files">
             {% for files in log_files %}
-                {% for file_name, file_url  in files.items %}
-                    <a href="{% url 'log-viewer:logfile-view' file_name 1 %}"><li>{{ file_name }}</li></a>
+                {% for file_name, xtra in files.items %}
+                    <a class="{% if request.resolver_match.kwargs.file_name == file_name %}selected{% endif %}" href="{% url 'log-viewer:logfile-view' file_name 1 %}">{{ xtra.display }}</a>
                 {% endfor %}
             {% endfor %}
-        </ul>
+        </div>
     </div>
+
+    <div class="right">
+        <ul>
+            {% for line in logs %}
+                <li>
+                    <pre>{{ line }}</pre>
+                </li>
+            {% endfor %}
+        </ul>
+        {% if not last %}
+            <a href="{% url 'log-viewer:logfile-view' current_file next_page %}"> More </a>
+        {% endif %}
+    </div>
+</div>
 {% endblock%}
