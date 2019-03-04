@@ -1,4 +1,5 @@
 *.pyc
 *~
 .idea/
+django_log_viewer.egg-info/
 
